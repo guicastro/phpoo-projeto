@@ -4,14 +4,24 @@ namespace Classes\Cliente\Types;
 
 class Cliente {
 
+	private $tipo;
 	private $nome;
 	private $cpf;
 	private $rg;
+	private $cnpj;
 	private $endereco;
+	private $enderecoCobranca;
 	private $municipio;
 	private $estado;
+	private $estrelas;
 
-	public function setNome($nome) {	
+	public function setTipo($tipo) {
+
+		$this->tipo = $tipo;
+		return $this;
+	}
+
+	public function setNome($nome) {
 
 		$this->nome = $nome;
 		return $this;
@@ -29,9 +39,20 @@ class Cliente {
 		return $this;
 	}
 
+	public function setCnpj($cnpj) {
+
+		$this->cnpj = $cnpj;
+		return $this;
+	}
+
 	public function setEndereco($endereco) {
 
 		$this->endereco = $endereco;
+		return $this;
+	}
+	public function setEnderecoCobranca($enderecoCobranca) {
+
+		$this->enderecoCobranca = $enderecoCobranca;
 		return $this;
 	}
 
@@ -45,6 +66,17 @@ class Cliente {
 
 		$this->estado = $estado;
 		return $this;
+	}
+
+	public function setEstrelas($estrelas) {
+
+		$this->estrelas = $estrelas;
+		return $this;
+	}
+
+	public function getTipo() {
+
+		return $this->tipo;
 	}
 
 	public function getNome() {
@@ -62,9 +94,19 @@ class Cliente {
 		return $this->rg;
 	}
 
+	public function getCnpj() {
+
+		return $this->cnpj;
+	}
+
 	public function getEndereco() {
 
 		return $this->endereco;
+	}
+
+	public function getEnderecoCobranca() {
+
+		return $this->enderecoCobranca;
 	}
 
 	public function getMunicipio() {
@@ -75,6 +117,26 @@ class Cliente {
 	public function getEstado() {
 
 		return $this->estado;
+	}
+
+	public function getEstrelas() {
+
+		return $this->estrelas;
+	}
+
+	public function getEstrelasGrafico() {
+
+		if($this->estrelas>0)
+			{
+				for($x=1; $x<=$this->estrelas; $x++) {
+					$grafico .= "<i class='fa fa-star'></i> ";
+				}
+			}
+		else
+			{
+				$grafico = "";;
+			}
+		return "<span style='display:none'>".$this->estrelas."</span> ".$grafico;
 	}
 
 	public function getDetalhes() {
